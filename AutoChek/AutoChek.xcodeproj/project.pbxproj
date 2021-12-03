@@ -32,6 +32,7 @@
 		4C1E7414275A782D00611EAB /* ACTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7413275A782D00611EAB /* ACTextField+Extension.swift */; };
 		4C1E7417275A79D200611EAB /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7416275A79D200611EAB /* StringConstants.swift */; };
 		4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7419275A7E1100611EAB /* ACButton.swift */; };
+		4C1E741D275A8CF100611EAB /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E741C275A8CF100611EAB /* UIHelper.swift */; };
 		4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59427591FB7005A9A58 /* AppDelegate.swift */; };
 		4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */; };
 		4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59827591FB7005A9A58 /* HomeVC.swift */; };
@@ -68,6 +69,7 @@
 		4C1E7413275A782D00611EAB /* ACTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ACTextField+Extension.swift"; sourceTree = "<group>"; };
 		4C1E7416275A79D200611EAB /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		4C1E7419275A7E1100611EAB /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
+		4C1E741C275A8CF100611EAB /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		4C2CE59127591FB7005A9A58 /* AutoChek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoChek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2CE59427591FB7005A9A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,21 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		4C1E741B275A8CCE00611EAB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C1E741C275A8CF100611EAB /* UIHelper.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4C1E741E275A8FB400611EAB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		4C2CE58827591FB7005A9A58 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +211,8 @@
 		4C2CE59327591FB7005A9A58 /* AutoChek */ = {
 			isa = PBXGroup;
 			children = (
+				4C1E741E275A8FB400611EAB /* Managers */,
+				4C1E741B275A8CCE00611EAB /* Common */,
 				4C1E7415275A79BF00611EAB /* String Constants */,
 				4C1E7411275A77E900611EAB /* Extensions */,
 				4C2CE5B22759A03F005A9A58 /* Support */,
@@ -353,6 +372,7 @@
 				4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */,
 				4C1E7417275A79D200611EAB /* StringConstants.swift in Sources */,
 				4C1E73E2275A3F5D00611EAB /* ACTitleLabel.swift in Sources */,
+				4C1E741D275A8CF100611EAB /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

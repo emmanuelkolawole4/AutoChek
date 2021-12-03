@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeVC.swift
 //  AutoChek
 //
 //  Created by FOLAHANMI KOLAWOLE on 02/12/2021.
@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
   private let cartRightBarButton = UIButton()
   private let searchBar = ACTextField()
   private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
+  private var carMakeCollection: UICollectionView!
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
@@ -104,12 +105,27 @@ class HomeVC: UIViewController {
     ])
   }
   
+  func configureCarMakeCollection() {
+    carMakeCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
+    view.addSubview(carMakeCollection)
+    carMakeCollection.translatesAutoresizingMaskIntoConstraints = false
+    carMakeCollection.backgroundColor = UIColor(red: (255/255), green: (204/255), blue: (102/255), alpha: 1)
+    
+    NSLayoutConstraint.activate([
+      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+      carMakeCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+      carMakeCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
+      carMakeCollection.heightAnchor.constraint(equalToConstant: 150)
+    ])
+  }
+  
   private func layoutSubviews() {
     configureGridLeftBarButton()
     configureTitleLabel()
     configureCartRightBarButton()
     configureSearchBar()
     configureFilterButton()
+    configureCarMakeCollection()
   }
   
   // MARK: - OBJC METHODS
