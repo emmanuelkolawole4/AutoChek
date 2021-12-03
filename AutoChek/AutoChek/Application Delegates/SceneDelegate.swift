@@ -30,28 +30,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func createHomeNC() -> UINavigationController {
     let homeVC = HomeVC()
-    homeVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "home"), tag: 0)
+    homeVC.tabBarItem = UITabBarItem(title: nil, image: Images.home, tag: 0)
     
     return UINavigationController(rootViewController: homeVC)
   }
   
   func createFavoritesNC() -> UINavigationController {
     let favoritesListVC = FavoritesListVC()
-    favoritesListVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "favorites"), tag: 1)
+    favoritesListVC.tabBarItem = UITabBarItem(title: nil, image: Images.favorites, tag: 1)
 
     return UINavigationController(rootViewController: favoritesListVC)
   }
   
   func createNotificationsNC() -> UINavigationController {
     let notificationsVC = NotificationsVC()
-    notificationsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "bell"), tag: 2)
+    notificationsVC.tabBarItem = UITabBarItem(title: nil, image: Images.bell, tag: 2)
 
     return UINavigationController(rootViewController: notificationsVC)
   }
   
   func createMessagesNC() -> UINavigationController {
     let messagesVC = MessagesVC()
-    messagesVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "message.fill", withConfiguration:UIImage.SymbolConfiguration(weight: .regular)), tag: 3)
+    messagesVC.tabBarItem = UITabBarItem(title: nil, image: Images.messages, tag: 3)
 
     return UINavigationController(rootViewController: messagesVC)
   }

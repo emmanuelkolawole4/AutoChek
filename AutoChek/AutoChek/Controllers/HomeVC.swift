@@ -13,6 +13,8 @@ class HomeVC: UIViewController {
   private let gridLeftBarButton = UIButton()
   private let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 24)
   private let cartRightBarButton = UIButton()
+  private let searchBar = ACTextField()
+  private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
@@ -35,7 +37,7 @@ class HomeVC: UIViewController {
     view.addSubview(gridLeftBarButton)
     gridLeftBarButton.translatesAutoresizingMaskIntoConstraints = false
     
-    let image = UIImage(systemName: "square.grid.2x2.fill", withConfiguration:UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(UIColor(red: (15/255), green: (19/255), blue: (39/255), alpha: 1), renderingMode: .alwaysOriginal)
+    let image = Home.Images.grid
     gridLeftBarButton.setImage(image, for: .normal)
     gridLeftBarButton.imageView?.contentMode = .scaleAspectFit
     gridLeftBarButton.contentVerticalAlignment = .fill
@@ -64,7 +66,7 @@ class HomeVC: UIViewController {
     view.addSubview(cartRightBarButton)
     cartRightBarButton.translatesAutoresizingMaskIntoConstraints = false
     
-    let image = UIImage(named: "cart")
+    let image = Home.Images.cart
     cartRightBarButton.setImage(image, for: .normal)
     cartRightBarButton.imageView?.contentMode = .scaleAspectFit
     cartRightBarButton.contentVerticalAlignment = .fill
@@ -79,10 +81,35 @@ class HomeVC: UIViewController {
     ])
   }
   
+  private func configureSearchBar() {
+    view.addSubview(searchBar)
+    searchBar.leftImage(Home.Images.search, imageWidth: 18, padding: 18)
+    
+    NSLayoutConstraint.activate([
+      searchBar.topAnchor.constraint(equalTo: gridLeftBarButton.bottomAnchor, constant: 30),
+      searchBar.leadingAnchor.constraint(equalTo: gridLeftBarButton.leadingAnchor),
+      searchBar.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width - 130),
+      searchBar.heightAnchor.constraint(equalToConstant: 60)
+    ])
+  }
+  
+  func configureFilterButton() {
+    view.addSubview(filterButton)
+    
+    NSLayoutConstraint.activate([
+      filterButton.trailingAnchor.constraint(equalTo: cartRightBarButton.trailingAnchor),
+      filterButton.lastBaselineAnchor.constraint(equalTo: searchBar.lastBaselineAnchor),
+      filterButton.heightAnchor.constraint(equalToConstant: 60),
+      filterButton.widthAnchor.constraint(equalToConstant: 60)
+    ])
+  }
+  
   private func layoutSubviews() {
     configureGridLeftBarButton()
     configureTitleLabel()
     configureCartRightBarButton()
+    configureSearchBar()
+    configureFilterButton()
   }
   
   // MARK: - OBJC METHODS

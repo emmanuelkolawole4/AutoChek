@@ -28,6 +28,10 @@
 		4C1E740B275A428D00611EAB /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1E73F7275A428D00611EAB /* Gilroy-SemiBold.ttf */; };
 		4C1E740C275A428D00611EAB /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1E73F8275A428D00611EAB /* Gilroy-Bold.ttf */; };
 		4C1E740D275A428D00611EAB /* Gilroy-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1E73F9275A428D00611EAB /* Gilroy-Heavy.ttf */; };
+		4C1E740F275A606800611EAB /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E740E275A606800611EAB /* ACTextField.swift */; };
+		4C1E7414275A782D00611EAB /* ACTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7413275A782D00611EAB /* ACTextField+Extension.swift */; };
+		4C1E7417275A79D200611EAB /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7416275A79D200611EAB /* StringConstants.swift */; };
+		4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7419275A7E1100611EAB /* ACButton.swift */; };
 		4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59427591FB7005A9A58 /* AppDelegate.swift */; };
 		4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */; };
 		4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59827591FB7005A9A58 /* HomeVC.swift */; };
@@ -60,6 +64,10 @@
 		4C1E73F7275A428D00611EAB /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
 		4C1E73F8275A428D00611EAB /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		4C1E73F9275A428D00611EAB /* Gilroy-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Heavy.ttf"; sourceTree = "<group>"; };
+		4C1E740E275A606800611EAB /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
+		4C1E7413275A782D00611EAB /* ACTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ACTextField+Extension.swift"; sourceTree = "<group>"; };
+		4C1E7416275A79D200611EAB /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		4C1E7419275A7E1100611EAB /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
 		4C2CE59127591FB7005A9A58 /* AutoChek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoChek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2CE59427591FB7005A9A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +102,9 @@
 		4C1E73E4275A3F6F00611EAB /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C1E7418275A7DF800611EAB /* Buttons */,
 				4C1E73E3275A3F6200611EAB /* Labels */,
+				4C1E7410275A607200611EAB /* Text Fields */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -126,6 +136,45 @@
 			path = "gilroy-font";
 			sourceTree = "<group>";
 		};
+		4C1E7410275A607200611EAB /* Text Fields */ = {
+			isa = PBXGroup;
+			children = (
+				4C1E740E275A606800611EAB /* ACTextField.swift */,
+			);
+			path = "Text Fields";
+			sourceTree = "<group>";
+		};
+		4C1E7411275A77E900611EAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C1E7412275A780C00611EAB /* Controllers+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C1E7413275A782D00611EAB /* ACTextField+Extension.swift */,
+			);
+			path = "Controllers+Extensions";
+			sourceTree = "<group>";
+		};
+		4C1E7415275A79BF00611EAB /* String Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4C1E7416275A79D200611EAB /* StringConstants.swift */,
+			);
+			path = "String Constants";
+			sourceTree = "<group>";
+		};
+		4C1E7418275A7DF800611EAB /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4C1E7419275A7E1100611EAB /* ACButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		4C2CE58827591FB7005A9A58 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +194,8 @@
 		4C2CE59327591FB7005A9A58 /* AutoChek */ = {
 			isa = PBXGroup;
 			children = (
+				4C1E7415275A79BF00611EAB /* String Constants */,
+				4C1E7411275A77E900611EAB /* Extensions */,
 				4C2CE5B22759A03F005A9A58 /* Support */,
 				4C2CE5AE27599FEE005A9A58 /* Application Delegates */,
 				4C2CE5AF2759A010005A9A58 /* Controllers */,
@@ -167,6 +218,7 @@
 		4C2CE5AF2759A010005A9A58 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C1E7412275A780C00611EAB /* Controllers+Extensions */,
 				4C2CE59827591FB7005A9A58 /* HomeVC.swift */,
 				4C2CE5A82759869B005A9A58 /* FavoritesListVC.swift */,
 				4C2CE5AA2759880B005A9A58 /* NotificationsVC.swift */,
@@ -291,11 +343,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C2CE5AD27598839005A9A58 /* MessagesVC.swift in Sources */,
+				4C1E740F275A606800611EAB /* ACTextField.swift in Sources */,
 				4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */,
 				4C2CE5AB2759880B005A9A58 /* NotificationsVC.swift in Sources */,
 				4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */,
+				4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */,
+				4C1E7414275A782D00611EAB /* ACTextField+Extension.swift in Sources */,
 				4C2CE5A92759869B005A9A58 /* FavoritesListVC.swift in Sources */,
 				4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */,
+				4C1E7417275A79D200611EAB /* StringConstants.swift in Sources */,
 				4C1E73E2275A3F5D00611EAB /* ACTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
