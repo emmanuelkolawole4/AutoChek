@@ -5,18 +5,19 @@
 //  Created by FOLAHANMI KOLAWOLE on 04/12/2021.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
   
   // MARK: - PROPERTIES
   static let shared = NetworkManager()
+  let cache = NSCache<NSString, UIImage>()
   
   // MARK: - INITIALIZERS
   private init() {}
   
   // MARK: - CUSTOM METHODS
-  func getPopularCarBrands(completion: @escaping (Result<PopularBrand, ACError>) -> Void) {
+  func getPopularCarBrands(completion: @escaping (Result<PopularCarBrand, ACError>) -> Void) {
     let popularBrandsEndpoint = ApiEndpoints.baseURL + "make?popular=true"
     guard let url = URL(string: popularBrandsEndpoint) else {
       completion(.failure(.invalidUrl))
@@ -44,8 +45,8 @@ class NetworkManager {
       
       do {
         let decoder = JSONDecoder()
-        let popularCarBrands = try decoder.decode(PopularBrand.self, from: data)
-        dump("popularCarBrands: \(popularCarBrands)")
+        let popularCarBrands = try decoder.decode(PopularCarBrand.self, from: data)
+//        dump("popularCarBrands: \(popularCarBrands)")
         completion(.success(popularCarBrands))
       } catch let decodingError {
         dump("error: \(decodingError)")

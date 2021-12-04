@@ -10,20 +10,26 @@ import UIKit
 class HomeVC: UIViewController {
   
   // MARK: - PROPERTIES
+  enum Section {
+    case main
+  }
+  
+  var popularCarBrands: [MakeList] = []
   private let gridLeftBarButton = UIButton()
   private let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 24)
   private let cartRightBarButton = UIButton()
   private let searchBar = ACTextField()
   private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
   private var carMakeCollection: UICollectionView!
+  var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
     super.viewDidLoad()
     configureViewController()
     layoutSubviews()
-    
     getPopularCarBrands()
+    configureDataSource()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -109,16 +115,36 @@ class HomeVC: UIViewController {
   
   private func configureCarMakeCollection() {
     carMakeCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
+    let layout = UICollectionViewFlowLayout()
     view.addSubview(carMakeCollection)
+    carMakeCollection.delegate = self
     carMakeCollection.translatesAutoresizingMaskIntoConstraints = false
-    carMakeCollection.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0.4, alpha: 1)
+    carMakeCollection.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+    carMakeCollection.backgroundColor = .clear
+    carMakeCollection.showsHorizontalScrollIndicator = false
+    carMakeCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
     
     NSLayoutConstraint.activate([
-      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 50),
       carMakeCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
       carMakeCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
-      carMakeCollection.heightAnchor.constraint(equalToConstant: 150)
+      carMakeCollection.heightAnchor.constraint(equalToConstant: 130)
     ])
+  }
+  
+  private func configureDataSource() {
+    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carMakeCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCarBrandCell.reuseIdentifier, for: indexPath) as? PopularCarBrandCell else { return UICollectionViewCell() }
+      cell.set(popularCarBrand: popularCarBrand)
+      return cell
+    })
+  }
+  
+  private func updateData(on popularCarBrands: [MakeList]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, MakeList>()
+    snapshot.appendSections([.main])
+    snapshot.appendItems(popularCarBrands)
+    dataSource.apply(snapshot, animatingDifferences: true)
   }
   
   private func layoutSubviews() {
@@ -136,9 +162,11 @@ class HomeVC: UIViewController {
       guard let self = self else { return }
       self.dismissLoadingView()
       switch result {
-        
       case .success(let popularCarBrands):
-        break
+        self.popularCarBrands = popularCarBrands.makeList
+        DispatchQueue.main.async {
+          self.updateData(on: self.popularCarBrands)
+        }
       case .failure(let error):
         self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
       }
@@ -157,3 +185,8 @@ class HomeVC: UIViewController {
 
 }
 
+extension HomeVC: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    CGSize(width: 80, height: 110)
+  }
+}

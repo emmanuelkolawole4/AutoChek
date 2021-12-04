@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct PopularBrand: Codable {
+struct PopularCarBrand: Codable {
   let makeList: [MakeList]
   let pagination: Pagination
 }
 
-struct MakeList: Codable {
+struct MakeList: Codable, Hashable {
   let id: Int
   let name: String
   let imageURL: String
