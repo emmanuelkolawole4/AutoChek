@@ -40,7 +40,7 @@ class ACButton: UIButton {
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
     setTitleColor(UIColor(red: (255/255), green: (204/255), blue: (102/255), alpha: 1), for: .normal)
-    titleLabel?.font = UIFont(name: "Gilroy-SemiBold", size: 10)
+    titleLabel?.font = UIFont(name: "Gilroy-SemiBold", size: 15)
     
     backgroundColor = UIColor(red: (15/255), green: (19/255), blue: (39/255), alpha: 1)
     
