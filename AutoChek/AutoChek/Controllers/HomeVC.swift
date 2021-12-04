@@ -31,7 +31,7 @@ class HomeVC: UIViewController {
   
   // MARK: - CUSTOM METHODS
   private func configureViewController() {
-    view.backgroundColor = .systemBackground
+    view.backgroundColor = #colorLiteral(red: 0.9685427547, green: 0.9686817527, blue: 0.9685124755, alpha: 1)
   }
   
   private func configureGridLeftBarButton() {
@@ -94,7 +94,7 @@ class HomeVC: UIViewController {
     ])
   }
   
-  func configureFilterButton() {
+  private func configureFilterButton() {
     view.addSubview(filterButton)
     
     NSLayoutConstraint.activate([
@@ -105,11 +105,11 @@ class HomeVC: UIViewController {
     ])
   }
   
-  func configureCarMakeCollection() {
+  private func configureCarMakeCollection() {
     carMakeCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
     view.addSubview(carMakeCollection)
     carMakeCollection.translatesAutoresizingMaskIntoConstraints = false
-    carMakeCollection.backgroundColor = UIColor(red: (255/255), green: (204/255), blue: (102/255), alpha: 1)
+    carMakeCollection.backgroundColor = #colorLiteral(red: 1, green: 0.8, blue: 0.4, alpha: 1)
     
     NSLayoutConstraint.activate([
       carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),

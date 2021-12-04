@@ -28,9 +28,9 @@ class ACButton: UIButton {
     configure()
   }
   
-  init(btnImage: UIImage, cornerRadius: CGFloat) {
+  init(btnImage: UIImage?, cornerRadius: CGFloat) {
     super.init(frame: .zero)
-    guard btnImage != nil else { return }
+    guard let btnImage = btnImage else { return }
     self.setImage(btnImage, for: .normal)
     layer.cornerRadius = cornerRadius
     self.imageView?.contentMode = .scaleAspectFit
