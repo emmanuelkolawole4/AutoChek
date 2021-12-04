@@ -28,11 +28,8 @@ class ACTitleLabel: UILabel {
   
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
-    textColor = .label
+    textColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
     adjustsFontSizeToFitWidth = true
-//    minimumScaleFactor = 0.9
-//    lineBreakMode = .byTruncatingTail
-    
     translatesAutoresizingMaskIntoConstraints = false
   }
 }

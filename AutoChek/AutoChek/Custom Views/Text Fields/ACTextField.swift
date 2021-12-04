@@ -28,19 +28,19 @@ class ACTextField: UITextField {
   private func configure() {
     layer.cornerRadius = 10
     layer.borderWidth = 2
-    layer.borderColor = UIColor.systemGray4.cgColor
+    layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     
-    textColor = .label
-    tintColor = .label
+    textColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
+    tintColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
     font = UIFont(name: "Gilroy-SemiBold", size: 18)
     adjustsFontSizeToFitWidth = true
     minimumFontSize = 16
     
-    backgroundColor = .tertiarySystemBackground
+    backgroundColor = #colorLiteral(red: 0.9646762013, green: 0.9646465182, blue: 0.9732099175, alpha: 1)
     
     autocorrectionType = .no
     
-    placeholder = "Search" //StringConstants.SearchVC.GFTextField.placeholderText
+    placeholder = "Search"
     
     returnKeyType = .search
     clearButtonMode = .whileEditing

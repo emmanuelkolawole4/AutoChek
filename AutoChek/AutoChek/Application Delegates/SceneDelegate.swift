@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func createTabbar() -> UITabBarController {
     let tabbar = UITabBarController()
-    UITabBar.appearance().tintColor = UIColor(red: (15/255), green: (19/255), blue: (39/255), alpha: 1)
+    UITabBar.appearance().tintColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
     tabbar.viewControllers = [createHomeNC(), createFavoritesNC(), createNotificationsNC(), createMessagesNC()]
     
     return tabbar
@@ -31,33 +31,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func createHomeNC() -> UINavigationController {
     let homeVC = HomeVC()
     homeVC.tabBarItem = UITabBarItem(title: nil, image: Images.home, tag: 0)
-    
     return UINavigationController(rootViewController: homeVC)
   }
   
   func createFavoritesNC() -> UINavigationController {
     let favoritesListVC = FavoritesListVC()
     favoritesListVC.tabBarItem = UITabBarItem(title: nil, image: Images.favorites, tag: 1)
-
     return UINavigationController(rootViewController: favoritesListVC)
   }
   
   func createNotificationsNC() -> UINavigationController {
     let notificationsVC = NotificationsVC()
     notificationsVC.tabBarItem = UITabBarItem(title: nil, image: Images.bell, tag: 2)
-
     return UINavigationController(rootViewController: notificationsVC)
   }
   
   func createMessagesNC() -> UINavigationController {
     let messagesVC = MessagesVC()
     messagesVC.tabBarItem = UITabBarItem(title: nil, image: Images.messages, tag: 3)
-
     return UINavigationController(rootViewController: messagesVC)
   }
   
   func configureNavigationBar() {
-    UINavigationBar.appearance().tintColor = UIColor(red: (15/255), green: (19/255), blue: (39/255), alpha: 1)
+    UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {}
