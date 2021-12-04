@@ -14,6 +14,7 @@ enum Images {
   static let favorites = UIImage(named: "favorites")
   static let bell = UIImage(named: "bell")
   static let messages = UIImage(systemName: "message.fill", withConfiguration:UIImage.SymbolConfiguration(weight: .regular))
+  static let placeholderImage = UIImage(systemName: "ellipsis", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
 }
 
 enum Colors {
