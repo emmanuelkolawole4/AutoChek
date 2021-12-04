@@ -31,6 +31,10 @@ class PopularCarBrandCell: UICollectionViewCell, ReuseIdentifying {
     popularCarBrandImageView.downloadImage(from: popularCarBrand.imageURL)
   }
   
+  override func prepareForReuse() {
+    popularCarBrandImageView.image = Home.Images.search
+  }
+  
   private func configure() {
     backgroundColor = #colorLiteral(red: 0.9685427547, green: 0.9686817527, blue: 0.9685124755, alpha: 1)
     addSubview(popularCarBrandImageView)

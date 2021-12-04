@@ -40,7 +40,6 @@ class ACPopularCarBrandImageView: UIImageView {
   }
   
   func downloadImage(from urlString: String) {
-//    self.image = nil
     let cacheKey = NSString(string: urlString)
     if let image = cache.object(forKey: cacheKey) {
       self.image = image
