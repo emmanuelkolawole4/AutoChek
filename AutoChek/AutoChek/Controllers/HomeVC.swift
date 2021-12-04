@@ -125,7 +125,7 @@ class HomeVC: UIViewController {
     carMakeCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
     
     NSLayoutConstraint.activate([
-      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 50),
       carMakeCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
       carMakeCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
       carMakeCollection.heightAnchor.constraint(equalToConstant: 130)
@@ -183,9 +183,6 @@ class HomeVC: UIViewController {
     dump("cart btn tapped")
   }
 
-}
-
-extension HomeVC: UICollectionViewDelegate {
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
