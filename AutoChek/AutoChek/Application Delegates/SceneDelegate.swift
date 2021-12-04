@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.windowScene = windowScene
     window?.rootViewController = createTabbar()
     window?.makeKeyAndVisible()
+    configureNavigationBar()
   }
   
   func createTabbar() -> UITabBarController {
@@ -29,34 +30,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func createHomeNC() -> UINavigationController {
     let homeVC = HomeVC()
-    homeVC.title = "Explore"
-    homeVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "home"), tag: 0)
+    homeVC.tabBarItem = UITabBarItem(title: nil, image: Images.home, tag: 0)
     
     return UINavigationController(rootViewController: homeVC)
   }
   
   func createFavoritesNC() -> UINavigationController {
     let favoritesListVC = FavoritesListVC()
-    favoritesListVC.title = "Favorites"
-    favoritesListVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "favorites"), tag: 1)
+    favoritesListVC.tabBarItem = UITabBarItem(title: nil, image: Images.favorites, tag: 1)
 
     return UINavigationController(rootViewController: favoritesListVC)
   }
   
   func createNotificationsNC() -> UINavigationController {
     let notificationsVC = NotificationsVC()
-    notificationsVC.title = "Notifications"
-    notificationsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "bell"), tag: 2)
+    notificationsVC.tabBarItem = UITabBarItem(title: nil, image: Images.bell, tag: 2)
 
     return UINavigationController(rootViewController: notificationsVC)
   }
   
   func createMessagesNC() -> UINavigationController {
     let messagesVC = MessagesVC()
-    messagesVC.title = "Messages"
-    messagesVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "message.fill", withConfiguration:UIImage.SymbolConfiguration(weight: .regular)), tag: 3)
+    messagesVC.tabBarItem = UITabBarItem(title: nil, image: Images.messages, tag: 3)
 
     return UINavigationController(rootViewController: messagesVC)
+  }
+  
+  func configureNavigationBar() {
+    UINavigationBar.appearance().tintColor = UIColor(red: (15/255), green: (19/255), blue: (39/255), alpha: 1)
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {}
