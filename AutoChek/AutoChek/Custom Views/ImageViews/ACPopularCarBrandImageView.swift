@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ACAvatarImageView: UIImageView {
+class ACPopularCarBrandImageView: UIImageView {
   
   // MARK: - PROPERTIES
   let cache = NetworkManager.shared.cache
@@ -23,14 +23,20 @@ class ACAvatarImageView: UIImageView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  init(cornerRadius: CGFloat) {
+    super.init(frame: .zero)
+    self.layer.cornerRadius = cornerRadius
+    
+    configure()
+  }
+  
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
-    layer.cornerRadius = 10
-    
     clipsToBounds = true
-    image = Images.placeholderImage
+    image = Home.Images.search
     
     translatesAutoresizingMaskIntoConstraints = false
+    backgroundColor = #colorLiteral(red: 0.9411487579, green: 0.9411157966, blue: 0.9496830106, alpha: 1)
   }
   
   func downloadImage(from urlString: String) {
@@ -47,6 +53,7 @@ class ACAvatarImageView: UIImageView {
       if let _ = error { return }
       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
       guard let data = data else { return }
+      print(data)
       
       guard let image = UIImage(data: data) else {
 //        dump("error creating image from data: \(error)")

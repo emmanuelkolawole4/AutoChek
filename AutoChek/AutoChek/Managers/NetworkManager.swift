@@ -17,7 +17,7 @@ class NetworkManager {
   private init() {}
   
   // MARK: - CUSTOM METHODS
-  func getPopularCarBrands(completion: @escaping (Result<PopularBrand, ACError>) -> Void) {
+  func getPopularCarBrands(completion: @escaping (Result<PopularCarBrand, ACError>) -> Void) {
     let popularBrandsEndpoint = ApiEndpoints.baseURL + "make?popular=true"
     guard let url = URL(string: popularBrandsEndpoint) else {
       completion(.failure(.invalidUrl))
@@ -45,8 +45,8 @@ class NetworkManager {
       
       do {
         let decoder = JSONDecoder()
-        let popularCarBrands = try decoder.decode(PopularBrand.self, from: data)
-        dump("popularCarBrands: \(popularCarBrands)")
+        let popularCarBrands = try decoder.decode(PopularCarBrand.self, from: data)
+//        dump("popularCarBrands: \(popularCarBrands)")
         completion(.success(popularCarBrands))
       } catch let decodingError {
         dump("error: \(decodingError)")

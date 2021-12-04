@@ -34,15 +34,15 @@
 		4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7419275A7E1100611EAB /* ACButton.swift */; };
 		4C1E741D275A8CF100611EAB /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E741C275A8CF100611EAB /* UIHelper.swift */; };
 		4C1E7422275BA01A00611EAB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7421275BA01900611EAB /* NetworkManager.swift */; };
-		4C1E7425275BA07400611EAB /* PopularBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7424275BA07400611EAB /* PopularBrand.swift */; };
+		4C1E7425275BA07400611EAB /* PopularCarBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7424275BA07400611EAB /* PopularCarBrand.swift */; };
 		4C1E7427275BABD000611EAB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7426275BABD000611EAB /* UIViewController+Extension.swift */; };
 		4C1E742A275BADEF00611EAB /* ACAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7429275BADEF00611EAB /* ACAlertVC.swift */; };
 		4C1E742E275BAE3800611EAB /* ACAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E742C275BAE3800611EAB /* ACAlertContainerView.swift */; };
 		4C1E742F275BAE3900611EAB /* ACEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E742D275BAE3800611EAB /* ACEmptyStateView.swift */; };
 		4C1E7431275BAEDE00611EAB /* ACBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7430275BAEDE00611EAB /* ACBodyLabel.swift */; };
-		4C1E7436275BBDAC00611EAB /* PopularBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7435275BBDAC00611EAB /* PopularBrandCell.swift */; };
+		4C1E7436275BBDAC00611EAB /* PopularCarBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */; };
 		4C1E7438275BBE0600611EAB /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7437275BBE0600611EAB /* ReuseIdentifying.swift */; };
-		4C1E743B275BC65300611EAB /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E743A275BC65300611EAB /* GFAvatarImageView.swift */; };
+		4C1E743B275BC65300611EAB /* ACPopularCarBrandImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */; };
 		4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59427591FB7005A9A58 /* AppDelegate.swift */; };
 		4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */; };
 		4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59827591FB7005A9A58 /* HomeVC.swift */; };
@@ -81,15 +81,15 @@
 		4C1E7419275A7E1100611EAB /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
 		4C1E741C275A8CF100611EAB /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		4C1E7421275BA01900611EAB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		4C1E7424275BA07400611EAB /* PopularBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularBrand.swift; sourceTree = "<group>"; };
+		4C1E7424275BA07400611EAB /* PopularCarBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCarBrand.swift; sourceTree = "<group>"; };
 		4C1E7426275BABD000611EAB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4C1E7429275BADEF00611EAB /* ACAlertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACAlertVC.swift; sourceTree = "<group>"; };
 		4C1E742C275BAE3800611EAB /* ACAlertContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACAlertContainerView.swift; sourceTree = "<group>"; };
 		4C1E742D275BAE3800611EAB /* ACEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACEmptyStateView.swift; sourceTree = "<group>"; };
 		4C1E7430275BAEDE00611EAB /* ACBodyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACBodyLabel.swift; sourceTree = "<group>"; };
-		4C1E7435275BBDAC00611EAB /* PopularBrandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularBrandCell.swift; sourceTree = "<group>"; };
+		4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularCarBrandCell.swift; sourceTree = "<group>"; };
 		4C1E7437275BBE0600611EAB /* ReuseIdentifying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
-		4C1E743A275BC65300611EAB /* GFAvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACPopularCarBrandImageView.swift; sourceTree = "<group>"; };
 		4C2CE59127591FB7005A9A58 /* AutoChek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoChek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2CE59427591FB7005A9A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		4C1E7423275BA02100611EAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C1E7424275BA07400611EAB /* PopularBrand.swift */,
+				4C1E7424275BA07400611EAB /* PopularCarBrand.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 		4C1E7432275BBD5000611EAB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4C1E7435275BBDAC00611EAB /* PopularBrandCell.swift */,
+				4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 		4C1E7439275BC65300611EAB /* ImageViews */ = {
 			isa = PBXGroup;
 			children = (
-				4C1E743A275BC65300611EAB /* GFAvatarImageView.swift */,
+				4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */,
 			);
 			path = ImageViews;
 			sourceTree = "<group>";
@@ -433,19 +433,19 @@
 			files = (
 				4C2CE5AD27598839005A9A58 /* MessagesVC.swift in Sources */,
 				4C1E740F275A606800611EAB /* ACTextField.swift in Sources */,
-				4C1E743B275BC65300611EAB /* GFAvatarImageView.swift in Sources */,
+				4C1E743B275BC65300611EAB /* ACPopularCarBrandImageView.swift in Sources */,
 				4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */,
 				4C1E7427275BABD000611EAB /* UIViewController+Extension.swift in Sources */,
 				4C1E7431275BAEDE00611EAB /* ACBodyLabel.swift in Sources */,
 				4C1E7422275BA01A00611EAB /* NetworkManager.swift in Sources */,
 				4C2CE5AB2759880B005A9A58 /* NotificationsVC.swift in Sources */,
 				4C1E7438275BBE0600611EAB /* ReuseIdentifying.swift in Sources */,
-				4C1E7436275BBDAC00611EAB /* PopularBrandCell.swift in Sources */,
+				4C1E7436275BBDAC00611EAB /* PopularCarBrandCell.swift in Sources */,
 				4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */,
 				4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */,
 				4C1E742A275BADEF00611EAB /* ACAlertVC.swift in Sources */,
 				4C1E742F275BAE3900611EAB /* ACEmptyStateView.swift in Sources */,
-				4C1E7425275BA07400611EAB /* PopularBrand.swift in Sources */,
+				4C1E7425275BA07400611EAB /* PopularCarBrand.swift in Sources */,
 				4C1E7414275A782D00611EAB /* ACTextField+Extension.swift in Sources */,
 				4C2CE5A92759869B005A9A58 /* FavoritesListVC.swift in Sources */,
 				4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */,

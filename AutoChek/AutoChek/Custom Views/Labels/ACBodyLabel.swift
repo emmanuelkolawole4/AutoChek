@@ -19,18 +19,19 @@ class ACBodyLabel: UILabel {
     fatalError("init(coder:) has not been implemented")
   }
   
-  init(textAlignment: NSTextAlignment) {
+  init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
     super.init(frame: .zero)
     self.textAlignment = textAlignment
+    self.font = UIFont(name: "Gilroy-SemiBold", size: fontSize)
     configure()
   }
   
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
-    textColor = .secondaryLabel
-    self.font = UIFont(name: "Gilroy-Bold", size: 16)
+    textColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
+    
     adjustsFontSizeToFitWidth = true
-    minimumScaleFactor = 0.75
+    minimumScaleFactor = 0.7
     lineBreakMode = .byWordWrapping
     
     translatesAutoresizingMaskIntoConstraints = false

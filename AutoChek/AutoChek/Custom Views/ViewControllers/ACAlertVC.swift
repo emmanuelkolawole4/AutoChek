@@ -12,7 +12,7 @@ class ACAlertVC: UIViewController {
   // MARK: - PROPERTIES
   let containerView = ACAlertContainerView()
   let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 20)
-  let messageLabel = ACBodyLabel(textAlignment: .center)
+  let messageLabel = ACBodyLabel(textAlignment: .center, fontSize: 16)
   let callToActionButton = ACButton(title: "OK!", cornerRadius: 10) 
   let padding: CGFloat = 20
   
