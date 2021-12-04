@@ -22,6 +22,8 @@ class HomeVC: UIViewController {
     super.viewDidLoad()
     configureViewController()
     layoutSubviews()
+    
+    getPopularCarBrands()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -127,6 +129,22 @@ class HomeVC: UIViewController {
     configureFilterButton()
     configureCarMakeCollection()
   }
+  
+  private func getPopularCarBrands() {
+    showLoadingView(in: carMakeCollection)
+    NetworkManager.shared.getPopularCarBrands { [weak self] result in
+      guard let self = self else { return }
+      self.dismissLoadingView()
+      switch result {
+        
+      case .success(let popularCarBrands):
+        break
+      case .failure(let error):
+        self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
+      }
+    }
+  }
+  
   
   // MARK: - OBJC METHODS
   @objc private func didTapGridBtn() {
