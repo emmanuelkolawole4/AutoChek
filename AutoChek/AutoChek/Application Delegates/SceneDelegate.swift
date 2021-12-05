@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func createTabbar() -> UITabBarController {
     let tabbar = UITabBarController()
     UITabBar.appearance().tintColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
+    UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance()
+    UITabBar.appearance().backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
     tabbar.viewControllers = [createHomeNC(), createFavoritesNC(), createNotificationsNC(), createMessagesNC()]
     
     return tabbar

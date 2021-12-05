@@ -14,14 +14,15 @@ class HomeVC: UIViewController {
     case main
   }
   
-  var popularCarBrands: [MakeList] = []
+  private var popularCarBrands: [MakeList] = []
   private let gridLeftBarButton = UIButton()
   private let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 24)
   private let cartRightBarButton = UIButton()
   private let searchBar = ACTextField()
   private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
-  private var carMakeCollection: UICollectionView!
-  var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
+  private var carBrandsCollection: UICollectionView!
+  private var carsTable: UITableView!
+  private var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
@@ -113,27 +114,46 @@ class HomeVC: UIViewController {
     ])
   }
   
-  private func configureCarMakeCollection() {
-    carMakeCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
-    let layout = UICollectionViewFlowLayout()
-    view.addSubview(carMakeCollection)
-    carMakeCollection.delegate = self
-    carMakeCollection.translatesAutoresizingMaskIntoConstraints = false
-    carMakeCollection.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-    carMakeCollection.backgroundColor = .clear
-    carMakeCollection.showsHorizontalScrollIndicator = false
-    carMakeCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
+  private func configureCarBrandsCollection() {
+    carBrandsCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
+    view.addSubview(carBrandsCollection)
+    carBrandsCollection.delegate = self
+    carBrandsCollection.translatesAutoresizingMaskIntoConstraints = false
+    carBrandsCollection.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+    carBrandsCollection.backgroundColor = .clear
+    carBrandsCollection.showsHorizontalScrollIndicator = false
+    carBrandsCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
     
     NSLayoutConstraint.activate([
-      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 50),
-      carMakeCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
-      carMakeCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
-      carMakeCollection.heightAnchor.constraint(equalToConstant: 130)
+      carBrandsCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 25),
+      carBrandsCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+      carBrandsCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
+//      carBrandsCollection.heightAnchor.constraint(equalToConstant: 130)
+      carBrandsCollection.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18)
+    ])
+  }
+  
+  private func configureCarsTable() {
+    carsTable = UITableView()
+    view.addSubview(carsTable)
+    carsTable.showsVerticalScrollIndicator = false
+    carsTable.dataSource = self
+    carsTable.delegate = self
+//    carsTable.backgroundColor = #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 0.6027823947)
+    carsTable.translatesAutoresizingMaskIntoConstraints = false
+    carsTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    
+    NSLayoutConstraint.activate([
+//      carsTable.topAnchor.constraint(equalTo: carBrandsCollection.bottomAnchor, constant: 50),
+      carsTable.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.48),
+      carsTable.leadingAnchor.constraint(equalTo: carBrandsCollection.leadingAnchor),
+      carsTable.trailingAnchor.constraint(equalTo: carBrandsCollection.trailingAnchor),
+      carsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
   
   private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carMakeCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
+    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carBrandsCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCarBrandCell.reuseIdentifier, for: indexPath) as? PopularCarBrandCell else { return UICollectionViewCell() }
       cell.set(popularCarBrand: popularCarBrand)
       return cell
@@ -153,11 +173,12 @@ class HomeVC: UIViewController {
     configureCartRightBarButton()
     configureSearchBar()
     configureFilterButton()
-    configureCarMakeCollection()
+    configureCarBrandsCollection()
+    configureCarsTable()
   }
   
   private func getPopularCarBrands() {
-    showLoadingView(in: carMakeCollection)
+    showLoadingView(in: carBrandsCollection)
     NetworkManager.shared.getPopularCarBrands { [weak self] result in
       guard let self = self else { return }
       self.dismissLoadingView()
@@ -189,4 +210,19 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     CGSize(width: 80, height: 110)
   }
+}
+
+extension HomeVC: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    10
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    UITableViewCell()
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    500
+  }
+  
 }
