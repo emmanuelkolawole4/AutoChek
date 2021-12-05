@@ -36,7 +36,7 @@ class PopularCarBrandCell: UICollectionViewCell, ReuseIdentifying {
   }
   
   private func configure() {
-    backgroundColor = #colorLiteral(red: 0.9685427547, green: 0.9686817527, blue: 0.9685124755, alpha: 1)
+    backgroundColor = .clear
     addSubview(popularCarBrandImageView)
     addSubview(popularCarBrandNameLabel)
     

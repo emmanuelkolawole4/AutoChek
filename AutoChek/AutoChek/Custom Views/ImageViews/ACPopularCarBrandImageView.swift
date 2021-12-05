@@ -36,7 +36,7 @@ class ACPopularCarBrandImageView: UIImageView {
     image = Home.Images.search
     
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor = #colorLiteral(red: 0.9411487579, green: 0.9411157966, blue: 0.9496830106, alpha: 1)
+    backgroundColor = #colorLiteral(red: 0.9234039783, green: 0.9127511382, blue: 0.965048492, alpha: 0.5)
   }
   
   func downloadImage(from urlString: String) {
