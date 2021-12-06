@@ -43,6 +43,8 @@
 		4C1E7436275BBDAC00611EAB /* PopularCarBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */; };
 		4C1E7438275BBE0600611EAB /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7437275BBE0600611EAB /* ReuseIdentifying.swift */; };
 		4C1E743B275BC65300611EAB /* ACPopularCarBrandImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */; };
+		4C1E743D275CFFBB00611EAB /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E743C275CFFBB00611EAB /* CarCell.swift */; };
+		4C1E743F275D265700611EAB /* ACCarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E743E275D265600611EAB /* ACCarImageView.swift */; };
 		4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59427591FB7005A9A58 /* AppDelegate.swift */; };
 		4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */; };
 		4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59827591FB7005A9A58 /* HomeVC.swift */; };
@@ -90,6 +92,8 @@
 		4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularCarBrandCell.swift; sourceTree = "<group>"; };
 		4C1E7437275BBE0600611EAB /* ReuseIdentifying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
 		4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACPopularCarBrandImageView.swift; sourceTree = "<group>"; };
+		4C1E743C275CFFBB00611EAB /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		4C1E743E275D265600611EAB /* ACCarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACCarImageView.swift; sourceTree = "<group>"; };
 		4C2CE59127591FB7005A9A58 /* AutoChek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoChek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2CE59427591FB7005A9A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				4C1E7435275BBDAC00611EAB /* PopularCarBrandCell.swift */,
+				4C1E743C275CFFBB00611EAB /* CarCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4C1E743A275BC65300611EAB /* ACPopularCarBrandImageView.swift */,
+				4C1E743E275D265600611EAB /* ACCarImageView.swift */,
 			);
 			path = ImageViews;
 			sourceTree = "<group>";
@@ -438,11 +444,13 @@
 				4C1E7427275BABD000611EAB /* UIViewController+Extension.swift in Sources */,
 				4C1E7431275BAEDE00611EAB /* ACBodyLabel.swift in Sources */,
 				4C1E7422275BA01A00611EAB /* NetworkManager.swift in Sources */,
+				4C1E743F275D265700611EAB /* ACCarImageView.swift in Sources */,
 				4C2CE5AB2759880B005A9A58 /* NotificationsVC.swift in Sources */,
 				4C1E7438275BBE0600611EAB /* ReuseIdentifying.swift in Sources */,
 				4C1E7436275BBDAC00611EAB /* PopularCarBrandCell.swift in Sources */,
 				4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */,
 				4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */,
+				4C1E743D275CFFBB00611EAB /* CarCell.swift in Sources */,
 				4C1E742A275BADEF00611EAB /* ACAlertVC.swift in Sources */,
 				4C1E742F275BAE3900611EAB /* ACEmptyStateView.swift in Sources */,
 				4C1E7425275BA07400611EAB /* PopularCarBrand.swift in Sources */,

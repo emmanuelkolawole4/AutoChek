@@ -14,14 +14,15 @@ class HomeVC: UIViewController {
     case main
   }
   
-  var popularCarBrands: [MakeList] = []
+  private var popularCarBrands: [MakeList] = []
   private let gridLeftBarButton = UIButton()
   private let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 24)
   private let cartRightBarButton = UIButton()
   private let searchBar = ACTextField()
   private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
-  private var carMakeCollection: UICollectionView!
-  var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
+  private var carBrandsCollection: UICollectionView!
+  private var carsTable: UITableView!
+  private var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
@@ -39,7 +40,7 @@ class HomeVC: UIViewController {
   
   // MARK: - CUSTOM METHODS
   private func configureViewController() {
-    view.backgroundColor = #colorLiteral(red: 0.9685427547, green: 0.9686817527, blue: 0.9685124755, alpha: 1)
+    view.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
   }
   
   private func configureGridLeftBarButton() {
@@ -54,7 +55,7 @@ class HomeVC: UIViewController {
     gridLeftBarButton.addTarget(self, action: #selector(didTapGridBtn), for: .touchUpInside)
     
     NSLayoutConstraint.activate([
-      gridLeftBarButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+      gridLeftBarButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
       gridLeftBarButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
       gridLeftBarButton.widthAnchor.constraint(equalToConstant: 32),
       gridLeftBarButton.heightAnchor.constraint(equalTo: gridLeftBarButton.widthAnchor)
@@ -83,7 +84,7 @@ class HomeVC: UIViewController {
     cartRightBarButton.addTarget(self, action: #selector(didTapCartBtn), for: .touchUpInside)
     
     NSLayoutConstraint.activate([
-      cartRightBarButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+      cartRightBarButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
       cartRightBarButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
       cartRightBarButton.widthAnchor.constraint(equalToConstant: 32),
       cartRightBarButton.heightAnchor.constraint(equalTo: cartRightBarButton.widthAnchor)
@@ -113,27 +114,47 @@ class HomeVC: UIViewController {
     ])
   }
   
-  private func configureCarMakeCollection() {
-    carMakeCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
-    let layout = UICollectionViewFlowLayout()
-    view.addSubview(carMakeCollection)
-    carMakeCollection.delegate = self
-    carMakeCollection.translatesAutoresizingMaskIntoConstraints = false
-    carMakeCollection.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-    carMakeCollection.backgroundColor = .clear
-    carMakeCollection.showsHorizontalScrollIndicator = false
-    carMakeCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
+  private func configureCarBrandsCollection() {
+    carBrandsCollection = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: view))
+    view.addSubview(carBrandsCollection)
+    carBrandsCollection.delegate = self
+    carBrandsCollection.translatesAutoresizingMaskIntoConstraints = false
+    carBrandsCollection.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+    carBrandsCollection.backgroundColor = .clear
+    carBrandsCollection.showsHorizontalScrollIndicator = false
+    carBrandsCollection.register(PopularCarBrandCell.self, forCellWithReuseIdentifier: PopularCarBrandCell.reuseIdentifier)
     
     NSLayoutConstraint.activate([
-      carMakeCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 50),
-      carMakeCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
-      carMakeCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
-      carMakeCollection.heightAnchor.constraint(equalToConstant: 130)
+      carBrandsCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+      carBrandsCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+      carBrandsCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
+//      carBrandsCollection.heightAnchor.constraint(equalToConstant: 130)
+      carBrandsCollection.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18)
+    ])
+  }
+  
+  private func configureCarsTable() {
+    carsTable = UITableView()
+    view.addSubview(carsTable)
+    carsTable.separatorStyle = .none
+    carsTable.showsVerticalScrollIndicator = false
+    carsTable.backgroundColor = .clear
+    carsTable.translatesAutoresizingMaskIntoConstraints = false
+    carsTable.dataSource = self
+    carsTable.delegate = self
+    carsTable.register(CarCell.self, forCellReuseIdentifier: CarCell.reuseIdentifier)
+    
+    NSLayoutConstraint.activate([
+//      carsTable.topAnchor.constraint(equalTo: carBrandsCollection.bottomAnchor, constant: 50),
+      carsTable.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.53),
+      carsTable.leadingAnchor.constraint(equalTo: carBrandsCollection.leadingAnchor),
+      carsTable.trailingAnchor.constraint(equalTo: carBrandsCollection.trailingAnchor),
+      carsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
   
   private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carMakeCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
+    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carBrandsCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCarBrandCell.reuseIdentifier, for: indexPath) as? PopularCarBrandCell else { return UICollectionViewCell() }
       cell.set(popularCarBrand: popularCarBrand)
       return cell
@@ -153,11 +174,12 @@ class HomeVC: UIViewController {
     configureCartRightBarButton()
     configureSearchBar()
     configureFilterButton()
-    configureCarMakeCollection()
+    configureCarBrandsCollection()
+    configureCarsTable()
   }
   
   private func getPopularCarBrands() {
-    showLoadingView(in: carMakeCollection)
+    showLoadingView(in: carBrandsCollection)
     NetworkManager.shared.getPopularCarBrands { [weak self] result in
       guard let self = self else { return }
       self.dismissLoadingView()
@@ -188,5 +210,41 @@ class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     CGSize(width: 80, height: 110)
+  }
+}
+
+extension HomeVC: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    10
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: CarCell.reuseIdentifier, for: indexPath) as? CarCell else {
+      fatalError("Error trying to dequeue cell of type \(CarCell.Type.self)")
+    }
+    
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    400
+  }
+  
+//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    let headerView = UIView()
+////    headerView.backgroundColor = view.backgroundColor
+//    return headerView
+//  }
+   
+//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    return 30
+//  }
+//  
+//  func numberOfSections(in tableView: UITableView) -> Int {
+//    return 10
+//  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }

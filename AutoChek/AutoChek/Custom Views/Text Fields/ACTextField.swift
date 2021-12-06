@@ -36,7 +36,7 @@ class ACTextField: UITextField {
     adjustsFontSizeToFitWidth = true
     minimumFontSize = 16
     
-    backgroundColor = #colorLiteral(red: 0.9646762013, green: 0.9646465182, blue: 0.9732099175, alpha: 1)
+    backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 0.9082459709)
     
     autocorrectionType = .no
     
