@@ -30,7 +30,7 @@ class ACCarImageView: UIImageView {
   
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
-    layer.cornerRadius = 10
+    layer.cornerRadius = 25
     layer.borderColor = #colorLiteral(red: 0.995991528, green: 0.9961339831, blue: 0.9959602952, alpha: 1)
     layer.borderWidth = 2
     

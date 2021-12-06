@@ -15,6 +15,7 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   private let carNameLabel = ACTitleLabel(textAlignment: .left, fontSize: 24)
   private let carYearLabel = ACBodyLabel(textAlignment: .left, fontSize: 18)
   private let carPriceLabel = ACBodyLabel(textAlignment: .left, fontSize: 18)
+  private let addToCartButton = ACButton(btnImage: Images.plus, cornerRadius: 25)
   
   // MARK: - INITIALIZERS
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -92,11 +93,25 @@ class CarCell: UITableViewCell, ReuseIdentifying {
     ])
   }
   
+  private func configureAddToCartButton() {
+    card.addSubview(addToCartButton)
+    addToCartButton.backgroundColor = #colorLiteral(red: 0.05882352941, green: 0.07450980392, blue: 0.1529411765, alpha: 1)
+    
+    NSLayoutConstraint.activate([
+      addToCartButton.trailingAnchor.constraint(equalTo: carCardImageView.trailingAnchor),
+      addToCartButton.bottomAnchor.constraint(equalTo: carPriceLabel.bottomAnchor),
+      addToCartButton.widthAnchor.constraint(equalToConstant: 50),
+      addToCartButton.heightAnchor.constraint(equalToConstant: 50)
+    ])
+    
+  }
+  
   private func layoutSubViews() {
     configureCard()
     configureProductCardImageView()
     configureCarNameLabel()
     configureCarYearLabel()
     configureCarPriceLabel()
+    configureAddToCartButton()
   }
 }
