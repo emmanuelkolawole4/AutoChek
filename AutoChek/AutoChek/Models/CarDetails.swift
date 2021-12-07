@@ -16,7 +16,7 @@ struct CarDetails: Codable {
   let marketplacePrice: Int
   let isFeatured: Bool
   let imageURL: String?
-//  let model: Model
+  let model: Model?
   let state, country, transmission: String
   let fuelType, sellingCondition: String
   let bodyType: BodyType
@@ -28,16 +28,13 @@ struct CarDetails: Codable {
   let installment: Int
   let depositReceived: Bool
   let loanValue: Int
-  let websiteURL: String
   let sold: Bool
   let carName: String
-//  let financingSettings: FinancingSettings
   
   enum CodingKeys: String, CodingKey {
     case id, year, insured, mileage, vin, marketplacePrice, isFeatured
     case imageURL = "imageUrl"
-    case state, country, transmission, fuelType, sellingCondition, bodyType, city, marketplaceOldPrice, mileageUnit, hasWarranty, hasFinancing, interiorColor, exteriorColor, engineType, installment, depositReceived, loanValue
-    case websiteURL = "websiteUrl"
+    case state, country, model, transmission, fuelType, sellingCondition, bodyType, city, marketplaceOldPrice, mileageUnit, hasWarranty, hasFinancing, interiorColor, exteriorColor, engineType, installment, depositReceived, loanValue
     case sold, carName
   }
 }
@@ -53,41 +50,15 @@ struct BodyType: Codable {
   }
 }
 
-// MARK: - FinancingSettings
-//struct FinancingSettings: Codable {
-//  let loanCalculator: LoanCalculator
-//}
-
-// MARK: - LoanCalculator
-//struct LoanCalculator: Codable {
-//  let loanPercentage: Double
-//  let ranges: Ranges
-//  let defaultValues: DefaultValues
-//}
-
-// MARK: - DefaultValues
-//struct DefaultValues: Codable {
-//  let interestRate, downPayment: Double
-//  let tenure: Int
-//}
-
-// MARK: - Ranges
-//struct Ranges: Codable {
-//  let minInterestRate, maxInterestRate, minDownPayment, maxDownPayment: Double
-//  let tenure: Int
-//}
-
-// MARK: - Model
-//struct Model: Codable {
-//  let id: Int
-//  let name, wheelType: String
-//  let imageURL: String?
-//  let make: BodyType
-//  let popular: Bool
-//
-//  enum CodingKeys: String, CodingKey {
-//    case id, name
-//    case imageURL = "imageUrl"
-//    case wheelType, make, popular
-//  }
-//}
+struct Model: Codable {
+  let id: Int
+  let name, imageURL, wheelType: String
+  let make: BodyType
+  let popular: Bool
+  
+  enum CodingKeys: String, CodingKey {
+    case id, name
+    case imageURL = "imageUrl"
+    case wheelType, make, popular
+  }
+}

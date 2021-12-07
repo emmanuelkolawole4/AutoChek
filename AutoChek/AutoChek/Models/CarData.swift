@@ -25,17 +25,16 @@ struct Car: Codable, Hashable {
   let imageURL: String
   let year: Int
   let city, state: String
-  let sellingCondition: SellingCondition
+  let sellingCondition: String?
   let hasWarranty: Bool
   let marketplacePrice, marketplaceOldPrice: Int
   let hasFinancing: Bool
   let mileage: Int
   let mileageUnit: MileageUnit
-  let installment: Int
+//  let installment: Int?
   let depositReceived: Bool
-  let loanValue: Int
-  let websiteURL: String
-//  let stats: Stats
+//  let loanValue: Int
+//  let websiteURL: String?
   let bodyTypeID: String
   let sold, hasThreeDImage: Bool
   let gradeScore: Double?
@@ -43,9 +42,8 @@ struct Car: Codable, Hashable {
   enum CodingKeys: String, CodingKey {
     case id, title
     case imageURL = "imageUrl"
-    case year, city, state, sellingCondition, hasWarranty, marketplacePrice, marketplaceOldPrice, hasFinancing, mileage, mileageUnit, installment, depositReceived, loanValue
-    case websiteURL = "websiteUrl"
-//    case stats
+    case year, city, state, sellingCondition, hasWarranty, marketplacePrice, marketplaceOldPrice, hasFinancing, mileage, mileageUnit, depositReceived
+//    case websiteURL = "websiteUrl"
     case bodyTypeID = "bodyTypeId"
     case sold, hasThreeDImage, gradeScore
   }

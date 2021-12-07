@@ -16,6 +16,11 @@ enum Images {
   static let messages = UIImage(systemName: "message.fill", withConfiguration:UIImage.SymbolConfiguration(weight: .regular))
   static let placeholderImage = UIImage(systemName: "ellipsis", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
   static let plus = UIImage(systemName: "plus", withConfiguration:UIImage.SymbolConfiguration(weight: .heavy))?.withTintColor(UIColor(red: (255/255), green: (204/255), blue: (102/255), alpha: 1), renderingMode: .alwaysOriginal)
+  static let location = UIImage(systemName: "mappin.and.ellipse")
+  static let price = UIImage(systemName: "banknote.fill")
+  static let fuel = UIImage(systemName: "fuelpump.fill")
+  static let engine = UIImage(named: "engine")
+  static let mileage = UIImage(systemName: "speedometer")
 }
 
 enum Colors {

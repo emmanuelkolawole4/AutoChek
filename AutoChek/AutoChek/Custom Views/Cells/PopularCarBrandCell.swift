@@ -32,7 +32,7 @@ class PopularCarBrandCell: UICollectionViewCell, ReuseIdentifying {
   }
   
   override func prepareForReuse() {
-    popularCarBrandImageView.image = Home.Images.search
+    popularCarBrandImageView.image = nil
   }
   
   private func configure() {
