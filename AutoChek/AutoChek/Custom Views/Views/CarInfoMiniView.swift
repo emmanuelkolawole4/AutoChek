@@ -14,7 +14,6 @@ enum ItemInfoType {
 class CarInfoMiniView: UIView {
   
   // MARK: - PROPERTIES
-//  var carDetails: CarDetails?
   private let symbolImageView = UIImageView()
   private let titleLabel = ACTitleLabel(textAlignment: .left, fontSize: 16)
   private let subTitleLabel = ACTitleLabel(textAlignment: .left, fontSize: 16)
