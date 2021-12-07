@@ -14,7 +14,7 @@ class HomeVC: UIViewController {
     case main
   }
   
-  var pageSize = 50
+  var pageSize = 24
   var hasMoreCars = true
   private var popularCarBrands: [MakeList] = []
   private var cars: [Car] = []
@@ -203,25 +203,10 @@ class HomeVC: UIViewController {
         self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
       }
     }
-    
-    
-//    NetworkManager.shared.fetchData(from: popularBrandsEndpoint, pageSize: nil, resultType: PopularCarBrand.self) { [weak self] result in
-//      guard let self = self else { return }
-//      self.dismissLoadingView()
-//      switch result {
-//      case .success(let popularCarBrands):
-//        self.popularCarBrands = popularCarBrands.makeList
-//        DispatchQueue.main.async {
-//          self.updateData(on: self.popularCarBrands)
-//        }
-//      case .failure(let error):
-//        self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
-//      }
-//    }
   }
   
   private func getCars() {
-    NetworkManager.shared.getCars(pageSize: 10) { [weak self] result in
+    NetworkManager.shared.getCars(pageSize: pageSize) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let cars):
@@ -269,10 +254,10 @@ extension HomeVC: UITableViewDelegate {
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
     let height = scrollView.frame.size.height
-    
+
     if offsetY > contentHeight - height {
       guard hasMoreCars else { return }
-      pageSize += 50
+      pageSize += 24
 //      getCars()
     }
   }

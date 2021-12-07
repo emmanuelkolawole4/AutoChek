@@ -48,9 +48,10 @@ class CarDetailsVC: UIViewController {
     NetworkManager.shared.getCarDetails(from: car.id) { result in
       switch result {
       case .success(let carDetails):
-        dump(carDetails)
         DispatchQueue.main.async {
           self.add(childVC: CarDetailsHeaderVC(carDetails: carDetails), to: self.headerView)
+          self.add(childVC: ChildCarInfoSectionVC(carDetails: carDetails), to: self.itemViewOne)
+          self.add(childVC: ChildCarInfoTwoSectionVC(carDetails: carDetails), to: self.itemViewTwo)
         }
       case .failure(let error):
         self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK!")
@@ -64,9 +65,6 @@ class CarDetailsVC: UIViewController {
       view.addSubview(itemView)
       itemView.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    itemViewOne.backgroundColor = .systemGray
-    itemViewTwo.backgroundColor = .systemGray
   }
   
   private func layoutSubviews() {
@@ -79,13 +77,13 @@ class CarDetailsVC: UIViewController {
       headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
       
       itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-      itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       itemViewOne.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
       
       itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: 20),
-      itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       itemViewTwo.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
       
     ])

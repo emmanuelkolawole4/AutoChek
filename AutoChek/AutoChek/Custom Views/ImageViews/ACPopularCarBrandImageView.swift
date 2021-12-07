@@ -33,7 +33,7 @@ class ACPopularCarBrandImageView: UIImageView {
   // MARK: - CUSTOM FUNCTIONS
   private func configure() {
     clipsToBounds = true
-    image = Home.Images.search
+    contentMode = .scaleAspectFill
     
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = #colorLiteral(red: 0.9234039783, green: 0.9127511382, blue: 0.965048492, alpha: 0.5)

@@ -49,6 +49,8 @@
 		4C1E7443275E9E4E00611EAB /* CarDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7442275E9E4E00611EAB /* CarDetailsVC.swift */; };
 		4C1E7445275EC00D00611EAB /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7444275EC00D00611EAB /* CarDetails.swift */; };
 		4C1E7447275EC96D00611EAB /* CarDetailsHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7446275EC96D00611EAB /* CarDetailsHeaderVC.swift */; };
+		4C1E7449275EEDEF00611EAB /* CarInfoMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E7448275EEDEF00611EAB /* CarInfoMiniView.swift */; };
+		4C1E744B275EF70F00611EAB /* ParentCarInfoSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E744A275EF70F00611EAB /* ParentCarInfoSectionVC.swift */; };
 		4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59427591FB7005A9A58 /* AppDelegate.swift */; };
 		4C2CE59727591FB7005A9A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */; };
 		4C2CE59927591FB7005A9A58 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE59827591FB7005A9A58 /* HomeVC.swift */; };
@@ -57,6 +59,8 @@
 		4C2CE5A92759869B005A9A58 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE5A82759869B005A9A58 /* FavoritesListVC.swift */; };
 		4C2CE5AB2759880B005A9A58 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE5AA2759880B005A9A58 /* NotificationsVC.swift */; };
 		4C2CE5AD27598839005A9A58 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CE5AC27598839005A9A58 /* MessagesVC.swift */; };
+		4CD17E17275EFC2D00DD18EF /* ChildCarInfoSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD17E16275EFC2D00DD18EF /* ChildCarInfoSectionVC.swift */; };
+		4CD17E19275F014D00DD18EF /* ChildCarInfoTwoSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD17E18275F014D00DD18EF /* ChildCarInfoTwoSectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +106,8 @@
 		4C1E7442275E9E4E00611EAB /* CarDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsVC.swift; sourceTree = "<group>"; };
 		4C1E7444275EC00D00611EAB /* CarDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
 		4C1E7446275EC96D00611EAB /* CarDetailsHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsHeaderVC.swift; sourceTree = "<group>"; };
+		4C1E7448275EEDEF00611EAB /* CarInfoMiniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoMiniView.swift; sourceTree = "<group>"; };
+		4C1E744A275EF70F00611EAB /* ParentCarInfoSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCarInfoSectionVC.swift; sourceTree = "<group>"; };
 		4C2CE59127591FB7005A9A58 /* AutoChek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoChek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2CE59427591FB7005A9A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C2CE59627591FB7005A9A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		4C2CE5A82759869B005A9A58 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		4C2CE5AA2759880B005A9A58 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		4C2CE5AC27598839005A9A58 /* MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
+		4CD17E16275EFC2D00DD18EF /* ChildCarInfoSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCarInfoSectionVC.swift; sourceTree = "<group>"; };
+		4CD17E18275F014D00DD18EF /* ChildCarInfoTwoSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCarInfoTwoSectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +255,9 @@
 			children = (
 				4C1E7429275BADEF00611EAB /* ACAlertVC.swift */,
 				4C1E7446275EC96D00611EAB /* CarDetailsHeaderVC.swift */,
+				4C1E744A275EF70F00611EAB /* ParentCarInfoSectionVC.swift */,
+				4CD17E16275EFC2D00DD18EF /* ChildCarInfoSectionVC.swift */,
+				4CD17E18275F014D00DD18EF /* ChildCarInfoTwoSectionVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 			children = (
 				4C1E742C275BAE3800611EAB /* ACAlertContainerView.swift */,
 				4C1E742D275BAE3800611EAB /* ACEmptyStateView.swift */,
+				4C1E7448275EEDEF00611EAB /* CarInfoMiniView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,8 +471,12 @@
 				4C1E743F275D265700611EAB /* ACCarImageView.swift in Sources */,
 				4C2CE5AB2759880B005A9A58 /* NotificationsVC.swift in Sources */,
 				4C1E7447275EC96D00611EAB /* CarDetailsHeaderVC.swift in Sources */,
+				4CD17E17275EFC2D00DD18EF /* ChildCarInfoSectionVC.swift in Sources */,
+				4C1E7449275EEDEF00611EAB /* CarInfoMiniView.swift in Sources */,
 				4C1E7445275EC00D00611EAB /* CarDetails.swift in Sources */,
 				4C1E7438275BBE0600611EAB /* ReuseIdentifying.swift in Sources */,
+				4CD17E19275F014D00DD18EF /* ChildCarInfoTwoSectionVC.swift in Sources */,
+				4C1E744B275EF70F00611EAB /* ParentCarInfoSectionVC.swift in Sources */,
 				4C1E7436275BBDAC00611EAB /* PopularCarBrandCell.swift in Sources */,
 				4C2CE59527591FB7005A9A58 /* AppDelegate.swift in Sources */,
 				4C1E741A275A7E1100611EAB /* ACButton.swift in Sources */,

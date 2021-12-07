@@ -32,10 +32,21 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   
   // MARK: - CUSTOM METHODS
   func set(car: Car) {
+    let currencyFormatter = NumberFormatter()
+    currencyFormatter.usesGroupingSeparator = true
+    currencyFormatter.numberStyle = .currency
+    currencyFormatter.locale = Locale(identifier: "ig_NG")
+
+    let priceString = currencyFormatter.string(from: NSNumber(value: car.marketplacePrice))
+    
     carNameLabel.text = car.title
     carYearLabel.text = String(car.year)
-    carPriceLabel.text = String(car.marketplacePrice)
+    carPriceLabel.text = priceString
     carCardImageView.downloadImage(from: car.imageURL)
+  }
+  
+  override func prepareForReuse() {
+    carCardImageView.image = nil
   }
   
   private func configureCard() {

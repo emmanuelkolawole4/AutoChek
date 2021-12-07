@@ -11,7 +11,7 @@ class CarDetailsHeaderVC: UIViewController {
   
   // MARK: - PROPERTIES
   private var carDetails: CarDetails
-  private let carImageView = ACPopularCarBrandImageView(cornerRadius: 10)
+  private let carImageView = ACPopularCarBrandImageView(cornerRadius: 15)
   private let carNameLabel = ACTitleLabel(textAlignment: .left, fontSize: 24)
   private let carYearLabel = ACBodyLabel(textAlignment: .left, fontSize: 16)
   private let carTransmissionLabel = ACBodyLabel(textAlignment: .left, fontSize: 16)
@@ -56,8 +56,8 @@ class CarDetailsHeaderVC: UIViewController {
     NSLayoutConstraint.activate([
       carImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
       carImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-      carImageView.widthAnchor.constraint(equalToConstant: 90),
-      carImageView.heightAnchor.constraint(equalToConstant: 90)
+      carImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+      carImageView.widthAnchor.constraint(equalTo: carImageView.heightAnchor),
     ])
   }
   
@@ -72,7 +72,7 @@ class CarDetailsHeaderVC: UIViewController {
   
   private func configureCarYearLabel() {
     NSLayoutConstraint.activate([
-      carYearLabel.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor, constant: -8),
+      carYearLabel.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor, constant: -20),
       carYearLabel.leadingAnchor.constraint(equalTo: carImageView.trailingAnchor, constant: 12),
       carYearLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
       carYearLabel.heightAnchor.constraint(equalToConstant: 20)
@@ -81,7 +81,7 @@ class CarDetailsHeaderVC: UIViewController {
   
   private func configureCarTransmissionLabel() {
     NSLayoutConstraint.activate([
-      carTransmissionLabel.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor, constant: 12),
+      carTransmissionLabel.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor, constant: 16),
       carTransmissionLabel.leadingAnchor.constraint(equalTo: carImageView.trailingAnchor, constant: 12),
       carTransmissionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
       carTransmissionLabel.heightAnchor.constraint(equalToConstant: 20)
