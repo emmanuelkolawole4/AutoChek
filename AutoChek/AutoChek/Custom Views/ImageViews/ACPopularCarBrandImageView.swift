@@ -52,10 +52,9 @@ class ACPopularCarBrandImageView: UIImageView {
       if let _ = error { return }
       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
       guard let data = data else { return }
-      print(data)
 
       guard let image = UIImage(data: data) else {
-        dump("error creating image from \(data): \(error)")
+//        dump("error creating image from \(data): \(error)")
         return
       }
 

@@ -19,35 +19,58 @@ class NetworkManager {
   // MARK: - CUSTOM METHODS
   func getPopularCarBrands(completion: @escaping (Result<PopularCarBrand, ACError>) -> Void) {
     let popularBrandsEndpoint = ApiEndpoints.baseURL + "make?popular=true"
-    guard let url = URL(string: popularBrandsEndpoint) else {
+    
+    fetchData(from: popularBrandsEndpoint, resultType: PopularCarBrand.self) { result in
+      completion(result)
+    }
+  }
+
+  func getCars(pageSize: Int, completion: @escaping (Result<CarData, ACError>) -> Void) {
+    let carsEndpoint = ApiEndpoints.baseURL + "car/search?pageSize=\(pageSize)"
+    fetchData(from: carsEndpoint, resultType: CarData.self) { result in
+      completion(result)
+    }
+  }
+  
+  func getCarDetails(from carId: String, completion: @escaping (Result<CarDetails, ACError>) -> Void) {
+    let carDetailsEndpoint = ApiEndpoints.baseURL + "car/\(carId)"
+    fetchData(from: carDetailsEndpoint, resultType: CarDetails.self) { result in
+      completion(result)
+    }
+  }
+  
+  func fetchData<T: Decodable>(from urlString: String, resultType: T.Type, completion: @escaping (Result<T, ACError>) -> Void) {
+    guard let url = URL(string: urlString) else {
       completion(.failure(.invalidUrl))
       return
     }
     
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+    let urlRequest = URLRequest(url: url)
+    
+    let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
       if let _ = error {
-        dump("error: \(error)")
+//        dump("error: \(error)")
         completion(.failure(.unableToComplete))
         return
       }
       
       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        dump("response: \(response)")
+//        dump("response: \(response)")
         completion(.failure(.invalidResponse))
         return
       }
       
       guard let data = data else {
-        dump("data: \(data)")
+//        dump("data: \(data)")
         completion(.failure(.invalidData))
         return
       }
-      
+
       do {
         let decoder = JSONDecoder()
-        let popularCarBrands = try decoder.decode(PopularCarBrand.self, from: data)
-//        dump("popularCarBrands: \(popularCarBrands)")
-        completion(.success(popularCarBrands))
+        let data = try decoder.decode(T.self, from: data)
+//        dump("data: \(data)")
+        completion(.success(data))
       } catch let decodingError {
         dump("error: \(decodingError)")
         completion(.failure(.invalidData))

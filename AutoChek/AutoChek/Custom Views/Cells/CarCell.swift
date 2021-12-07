@@ -21,7 +21,8 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    backgroundColor =  .clear//.systemGray
+    backgroundColor =  .clear
+    selectionStyle = .none
     layoutSubViews()
   }
   
@@ -29,9 +30,14 @@ class CarCell: UITableViewCell, ReuseIdentifying {
     fatalError("init(coder:) has not been implemented")
   }
   
-  // MARK: - VIEW LIFECYCLE METHODS
-  
   // MARK: - CUSTOM METHODS
+  func set(car: Car) {
+    carNameLabel.text = car.title
+    carYearLabel.text = String(car.year)
+    carPriceLabel.text = String(car.marketplacePrice)
+    carCardImageView.downloadImage(from: car.imageURL)
+  }
+  
   private func configureCard() {
     addSubview(card)
     card.backgroundColor = .white
@@ -50,21 +56,18 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   private func configureProductCardImageView() {
     card.addSubview(carCardImageView)
     carCardImageView.backgroundColor =  #colorLiteral(red: 0.9234039783, green: 0.9127511382, blue: 0.965048492, alpha: 1)
-    carCardImageView.image = UIImage(named: "benz")
     
       
     NSLayoutConstraint.activate([
       carCardImageView.topAnchor.constraint(equalTo: card.topAnchor, constant: -80),
       carCardImageView.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 30),
       carCardImageView.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -30),
-      //        productCardImageView.heightAnchor.constraint(equalTo: productCardImageView.widthAnchor),
       carCardImageView.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -120)
     ])
     }
   
   private func configureCarNameLabel() {
     card.addSubview(carNameLabel)
-    carNameLabel.text = "Porsche 911"
     
     NSLayoutConstraint.activate([
       carNameLabel.topAnchor.constraint(equalTo: carCardImageView.bottomAnchor, constant: 15),
@@ -74,7 +77,6 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   
   private func configureCarYearLabel() {
     card.addSubview(carYearLabel)
-    carYearLabel.text = "2021"
     carYearLabel.textColor = #colorLiteral(red: 0.7874763608, green: 0.7921344638, blue: 0.8093597293, alpha: 1)
     
     NSLayoutConstraint.activate([
@@ -85,7 +87,6 @@ class CarCell: UITableViewCell, ReuseIdentifying {
   
   private func configureCarPriceLabel() {
     card.addSubview(carPriceLabel)
-    carPriceLabel.text = "$ 7014008.00"
     
     NSLayoutConstraint.activate([
       carPriceLabel.topAnchor.constraint(equalTo: carYearLabel.bottomAnchor, constant: 15),
