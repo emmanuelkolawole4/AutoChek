@@ -56,7 +56,6 @@ class ACCarImageView: UIImageView {
       guard let data = data else { return }
       
       guard let image = UIImage(data: data) else {
-//        dump("error creating image from data: \(error)")
         return
       }
       

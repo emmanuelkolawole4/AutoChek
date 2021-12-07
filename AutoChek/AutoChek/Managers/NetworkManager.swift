@@ -27,6 +27,7 @@ class NetworkManager {
 
   func getCars(pageSize: Int, completion: @escaping (Result<CarData, ACError>) -> Void) {
     let carsEndpoint = ApiEndpoints.baseURL + "car/search?pageSize=\(pageSize)"
+    
     fetchData(from: carsEndpoint, resultType: CarData.self) { result in
       completion(result)
     }
@@ -34,6 +35,7 @@ class NetworkManager {
   
   func getCarDetails(from carId: String, completion: @escaping (Result<CarDetails, ACError>) -> Void) {
     let carDetailsEndpoint = ApiEndpoints.baseURL + "car/\(carId)"
+    
     fetchData(from: carDetailsEndpoint, resultType: CarDetails.self) { result in
       completion(result)
     }
@@ -49,19 +51,16 @@ class NetworkManager {
     
     let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
       if let _ = error {
-//        dump("error: \(error)")
         completion(.failure(.unableToComplete))
         return
       }
       
       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//        dump("response: \(response)")
         completion(.failure(.invalidResponse))
         return
       }
       
       guard let data = data else {
-//        dump("data: \(data)")
         completion(.failure(.invalidData))
         return
       }
@@ -69,7 +68,6 @@ class NetworkManager {
       do {
         let decoder = JSONDecoder()
         let data = try decoder.decode(T.self, from: data)
-//        dump("data: \(data)")
         completion(.success(data))
       } catch let decodingError {
         dump("error: \(decodingError)")

@@ -30,11 +30,8 @@ struct Car: Codable, Hashable {
   let marketplacePrice, marketplaceOldPrice: Int
   let hasFinancing: Bool
   let mileage: Int
-  let mileageUnit: MileageUnit
-//  let installment: Int?
+  let mileageUnit: String?
   let depositReceived: Bool
-//  let loanValue: Int
-//  let websiteURL: String?
   let bodyTypeID: String
   let sold, hasThreeDImage: Bool
   let gradeScore: Double?
@@ -43,7 +40,6 @@ struct Car: Codable, Hashable {
     case id, title
     case imageURL = "imageUrl"
     case year, city, state, sellingCondition, hasWarranty, marketplacePrice, marketplaceOldPrice, hasFinancing, mileage, mileageUnit, depositReceived
-//    case websiteURL = "websiteUrl"
     case bodyTypeID = "bodyTypeId"
     case sold, hasThreeDImage, gradeScore
   }
