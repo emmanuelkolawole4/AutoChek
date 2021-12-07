@@ -14,7 +14,10 @@ class HomeVC: UIViewController {
     case main
   }
   
+  var pageSize = 50
+  var hasMoreCars = true
   private var popularCarBrands: [MakeList] = []
+  private var cars: [Car] = []
   private let gridLeftBarButton = UIButton()
   private let titleLabel = ACTitleLabel(textAlignment: .center, fontSize: 24)
   private let cartRightBarButton = UIButton()
@@ -22,7 +25,8 @@ class HomeVC: UIViewController {
   private let filterButton = ACButton(btnImage: Home.Images.filter!, cornerRadius: 12)
   private var carBrandsCollection: UICollectionView!
   private var carsTable: UITableView!
-  private var dataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
+  private var collectionViewDataSource: UICollectionViewDiffableDataSource<Section, MakeList>!
+  private var tableViewDataSource: UITableViewDiffableDataSource<Section, Car>!
 
   // MARK: - VIEW LIFECYCLE METHODS
   override func viewDidLoad() {
@@ -30,7 +34,9 @@ class HomeVC: UIViewController {
     configureViewController()
     layoutSubviews()
     getPopularCarBrands()
-    configureDataSource()
+    getCars()
+    configureCollectionViewDataSource()
+    configureTableViewDataSource()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -128,7 +134,6 @@ class HomeVC: UIViewController {
       carBrandsCollection.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
       carBrandsCollection.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
       carBrandsCollection.trailingAnchor.constraint(equalTo: filterButton.trailingAnchor),
-//      carBrandsCollection.heightAnchor.constraint(equalToConstant: 130)
       carBrandsCollection.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18)
     ])
   }
@@ -140,12 +145,10 @@ class HomeVC: UIViewController {
     carsTable.showsVerticalScrollIndicator = false
     carsTable.backgroundColor = .clear
     carsTable.translatesAutoresizingMaskIntoConstraints = false
-    carsTable.dataSource = self
     carsTable.delegate = self
     carsTable.register(CarCell.self, forCellReuseIdentifier: CarCell.reuseIdentifier)
     
     NSLayoutConstraint.activate([
-//      carsTable.topAnchor.constraint(equalTo: carBrandsCollection.bottomAnchor, constant: 50),
       carsTable.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.53),
       carsTable.leadingAnchor.constraint(equalTo: carBrandsCollection.leadingAnchor),
       carsTable.trailingAnchor.constraint(equalTo: carBrandsCollection.trailingAnchor),
@@ -153,10 +156,20 @@ class HomeVC: UIViewController {
     ])
   }
   
-  private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carBrandsCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
+  private func configureCollectionViewDataSource() {
+    collectionViewDataSource = UICollectionViewDiffableDataSource<Section, MakeList>(collectionView: carBrandsCollection, cellProvider: { collectionView, indexPath, popularCarBrand in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCarBrandCell.reuseIdentifier, for: indexPath) as? PopularCarBrandCell else { return UICollectionViewCell() }
       cell.set(popularCarBrand: popularCarBrand)
+      return cell
+    })
+  }
+  
+  private func configureTableViewDataSource() {
+    tableViewDataSource = UITableViewDiffableDataSource<Section, Car>(tableView: carsTable, cellProvider: { tableView, indexPath, car in
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CarCell.reuseIdentifier, for: indexPath) as? CarCell else {
+        return UITableViewCell()
+      }
+      cell.set(car: car)
       return cell
     })
   }
@@ -165,17 +178,14 @@ class HomeVC: UIViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Section, MakeList>()
     snapshot.appendSections([.main])
     snapshot.appendItems(popularCarBrands)
-    dataSource.apply(snapshot, animatingDifferences: true)
+    collectionViewDataSource.apply(snapshot, animatingDifferences: true)
   }
   
-  private func layoutSubviews() {
-    configureGridLeftBarButton()
-    configureTitleLabel()
-    configureCartRightBarButton()
-    configureSearchBar()
-    configureFilterButton()
-    configureCarBrandsCollection()
-    configureCarsTable()
+  private func updateData(on cars: [Car]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, Car>()
+    snapshot.appendSections([.main])
+    snapshot.appendItems(cars)
+    tableViewDataSource.apply(snapshot, animatingDifferences: true)
   }
   
   private func getPopularCarBrands() {
@@ -193,8 +203,48 @@ class HomeVC: UIViewController {
         self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
       }
     }
+    
+    
+//    NetworkManager.shared.fetchData(from: popularBrandsEndpoint, pageSize: nil, resultType: PopularCarBrand.self) { [weak self] result in
+//      guard let self = self else { return }
+//      self.dismissLoadingView()
+//      switch result {
+//      case .success(let popularCarBrands):
+//        self.popularCarBrands = popularCarBrands.makeList
+//        DispatchQueue.main.async {
+//          self.updateData(on: self.popularCarBrands)
+//        }
+//      case .failure(let error):
+//        self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
+//      }
+//    }
   }
   
+  private func getCars() {
+    NetworkManager.shared.getCars(pageSize: 10) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let cars):
+        if cars.pagination.total < 24 { self.hasMoreCars = false }
+        self.cars.append(contentsOf: cars.result)
+        DispatchQueue.main.async {
+          self.updateData(on: self.cars)
+        }
+      case .failure(let error):
+        self.presentACAlertOnMainThread(title: "ERROR!!!", message: error.rawValue, buttonTitle: "OK")
+      }
+    }
+  }
+  
+  private func layoutSubviews() {
+    configureGridLeftBarButton()
+    configureTitleLabel()
+    configureCartRightBarButton()
+    configureSearchBar()
+    configureFilterButton()
+    configureCarBrandsCollection()
+    configureCarsTable()
+  }
   
   // MARK: - OBJC METHODS
   @objc private func didTapGridBtn() {
@@ -213,38 +263,26 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
   }
 }
 
-extension HomeVC: UITableViewDataSource, UITableViewDelegate {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    10
-  }
+extension HomeVC: UITableViewDelegate {
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: CarCell.reuseIdentifier, for: indexPath) as? CarCell else {
-      fatalError("Error trying to dequeue cell of type \(CarCell.Type.self)")
-    }
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let offsetY = scrollView.contentOffset.y
+    let contentHeight = scrollView.contentSize.height
+    let height = scrollView.frame.size.height
     
-    return cell
+    if offsetY > contentHeight - height {
+      guard hasMoreCars else { return }
+      pageSize += 50
+//      getCars()
+    }
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    400
-  }
-  
-//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    let headerView = UIView()
-////    headerView.backgroundColor = view.backgroundColor
-//    return headerView
-//  }
-   
-//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//    return 30
-//  }
-//  
-//  func numberOfSections(in tableView: UITableView) -> Int {
-//    return 10
-//  }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 400 }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    let car = cars[indexPath.item]
+    let destinationVC = CarDetailsVC(with: car)
+    navigationController?.pushViewController(destinationVC, animated: true)
   }
 }

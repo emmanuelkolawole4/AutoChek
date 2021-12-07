@@ -32,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func createHomeNC() -> UINavigationController {
     let homeVC = HomeVC()
+    homeVC.title = "Product"
     homeVC.tabBarItem = UITabBarItem(title: nil, image: Images.home, tag: 0)
     return UINavigationController(rootViewController: homeVC)
   }
